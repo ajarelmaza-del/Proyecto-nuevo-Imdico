@@ -1,0 +1,251 @@
+/* Estilos generales y reseteo básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* 1. Estilos para la Barra de Navegación Alta */
+.navbar-alta {
+    background-color: #5c5b5b; /* Fondo de la barra */
+    /* Hacemos la barra alta (ejemplo: 100px) */
+    height: 100px; 
+    color: white;
+    /* Usamos Flexbox para alinear el logo y los botones horizontalmente */
+    display: flex;
+    /* Distribuye el espacio entre el logo (izquierda) y los botones (derecha) */
+    justify-content: space-between;
+    /* Centra los ítems verticalmente en la barra (importante para la altura) */
+    align-items: center; 
+    padding: 0 20px; /* Un poco de espacio a los lados */
+}
+
+/* 2. Estilos para el Logo */
+.logo img {
+    /* Ajusta el tamaño del logo para que encaje en la barra alta */
+    height: 80px; /* Un poco menos que la altura de la barra (100px) */
+    width: auto;
+    display: block; /* Para evitar espacios extra bajo la imagen */
+}
+
+/* 3. Estilos para la Navegación y Botones */
+.botones-nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    /* Usamos Flexbox para poner los ítems de la lista en línea */
+    display: flex;
+}
+
+.botones-nav li {
+    margin-left: 20px; /* Espacio entre los botones */
+}
+
+.botones-nav a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px; /* Relleno para que parezcan botones */
+    border: 2px solid white; /* Borde simple para simular un botón */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Animación suave */
+}
+
+.botones-nav a:hover {
+    background-color: white; /* Color de fondo al pasar el ratón */
+    color: #333; /* Color de texto al pasar el ratón */
+}
+
+/* Estilo para el contenido principal (solo para demostrar que la barra está fija) */
+main {
+    padding: 20px;
+}
+
+/* --- Estilos para la Sección de Servicios (Galería) --- */
+
+#servicios {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #ffffff; /* Fondo blanco para destacar la sección */
+}
+
+#servicios h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Contenedor de la Galería (Usando CSS Grid) */
+.galeria-servicios {
+    display: grid;
+    /* Define 3 columnas de igual tamaño */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Espacio entre las tarjetas */
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la cuadrícula */
+}
+
+/* Estilo de cada Tarjeta de Servicio */
+.tarjeta-servicio {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+}
+
+.tarjeta-servicio:hover {
+    /* Efecto de elevación al pasar el ratón */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-servicio img {
+    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+    height: 200px; /* Altura fija para que las tarjetas se alineen mejor */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-servicio h3 {
+    color: #007bff; /* Un color primario para el título */
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.tarjeta-servicio p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Estilo del Botón de Información */
+.btn-info {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn-info:hover {
+    background-color: #007bff;
+}
+
+
+/* --- Media Query para Responsividad --- */
+/* Si la pantalla es más pequeña (ej. tabletas) */
+@media (max-width: 900px) {
+    .galeria-servicios {
+        /* Cambia a 2 columnas */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* Si la pantalla es muy pequeña (ej. móviles) */
+@media (max-width: 600px) {
+    .galeria-servicios {
+        /* Cambia a 1 columna (lista vertical) */
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* --- Estilos para la Sección de Productos --- */
+
+#productos {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #e9e9e9; /* Un color de fondo diferente para separarla de Servicios */
+}
+
+#productos h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Contenedor de la Galería de Productos (Usando CSS Grid) */
+.galeria-productos {
+    display: grid;
+    /* Define 3 columnas de igual tamaño, igual que servicios */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la cuadrícula */
+}
+
+/* Estilo de cada Tarjeta de Producto */
+.tarjeta-producto {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-producto img {
+    width: 100%; 
+    height: 180px; /* Un poco más pequeña que la de servicios */
+    object-fit: cover; 
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-producto h3 {
+    color: #333;
+    font-size: 1.3em;
+    margin: 10px 0 5px 0;
+}
+
+.tarjeta-producto .precio {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #e63946; /* Color de precio llamativo */
+    margin-bottom: 15px;
+}
+
+/* Estilo del Botón de Compra */
+.btn-comprar {
+    display: block; /* Ocupa todo el ancho de la tarjeta */
+    width: 100%;
+    padding: 12px 0;
+    background-color: #4CAF50; /* Color verde para la acción de compra */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #45a049;
+}
+
+
+/* --- Responsividad para la Galería de Productos --- */
+
+@media (max-width: 900px) {
+    .galeria-productos {
+        /* Cambia a 2 columnas */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-productos {
+        /* Cambia a 1 columna (lista vertical) */
+        grid-template-columns: 1fr; 
+    }
+}
