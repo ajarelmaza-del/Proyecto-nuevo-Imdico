@@ -1,23 +1,53 @@
-/* Estilos generales y reseteo básico */
+
+/* Reset básico para márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding y border no afecten al tamaño total */
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    line-height: 1.6;
+    padding-top: 100px; 
 }
 
 /* 1. Estilos para la Barra de Navegación Alta */
 .navbar-alta {
-    background-color: #5c5b5b; /* Fondo de la barra */
-    /* Hacemos la barra alta (ejemplo: 100px) */
+    background-color: #a20946; 
     height: 100px; 
     color: white;
-    /* Usamos Flexbox para alinear el logo y los botones horizontalmente */
     display: flex;
     /* Distribuye el espacio entre el logo (izquierda) y los botones (derecha) */
     justify-content: space-between;
     /* Centra los ítems verticalmente en la barra (importante para la altura) */
     align-items: center; 
-    padding: 0 20px; /* Un poco de espacio a los lados */
+    padding: 0 0px; 
+    
+    /* === CAMBIOS NECESARIOS PARA FIJAR LA BARRA === */
+    position: fixed; /* 1. Fija la posición de la barra en la ventana */
+    top: 0;          /* 2. La ancla al borde superior */
+    left: 0;         /* 3. La ancla al borde izquierdo */
+    width: 100%;     /* 4. Asegura que ocupe todo el ancho */
+    z-index: 1000;   /* 5. Asegura que esté por encima de todo el contenido */
+    /* ============================================= */
+}
+
+/* === AÑADIR NUEVA REGLA PARA EL CONTENIDO PRINCIPAL (MAIN) === */
+
+/*
+   Cuando la barra de navegación se vuelve "fixed" (fija), sale del flujo normal del documento,
+   y el contenido principal (main) se desplaza hacia arriba, quedando cubierto por la barra.
+   Necesitas añadir un relleno (padding-top) a la etiqueta <body> o <main>
+   igual o ligeramente superior a la altura de la barra (100px) para compensar ese espacio.
+*/
+body {
+    margin: 6;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding-top: 100px; /* Añade espacio en la parte superior igual a la altura del navbar */
 }
 
 /* 2. Estilos para el Logo */
@@ -26,6 +56,10 @@ body {
     height: 80px; /* Un poco menos que la altura de la barra (100px) */
     width: auto;
     display: block; /* Para evitar espacios extra bajo la imagen */
+    margin-left: auto;
+    margin-right: auto;
+    
+
 }
 
 /* 3. Estilos para la Navegación y Botones */
@@ -35,6 +69,7 @@ body {
     padding: 0;
     /* Usamos Flexbox para poner los ítems de la lista en línea */
     display: flex;
+    margin-right:  flex;
 }
 
 .botones-nav li {
@@ -61,7 +96,244 @@ main {
     padding: 20px;
 }
 
+
+/* --- Estilos para la Sección de Inicio (Bienvenida y Reseña) --- */
+
+.seccion-inicio {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Un fondo muy claro para la sección de inicio */
+    text-align: center;
+}
+
+/* Estilos para el Cuadro de Bienvenida */
+.banner-de-bienvenida {
+    text-align: left;
+    max-width: 2000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    }
+
+    .banner-de-bienvenida {
+        flex: 1;
+    }
+
+/* Contenedor de Reseña y Imagen (Usando Flexbox) */
+.reseña-con-imagen {
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 40px; /* Espacio entre el texto y la imagen */
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.reseña-texto {
+    flex: 2; /* El texto ocupará el doble de espacio que la imagen */
+}
+
+.reseña-texto h2 {
+    font-size: 2.2em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.reseña-texto p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.imagen-destacada {
+    flex: 1; /* La imagen ocupará una parte del espacio */
+}
+
+.imagen-destacada img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón principal (ejemplo, puedes ajustar su estilo) */
+.btn-principal {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #a20946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-principal:hover {
+    background-color: #0056b3;
+}
+
+/* --- Media Query para Responsividad (Sección de Inicio) --- */
+@media (max-width: 800px) {
+    .reseña-con-imagen {
+        /* Pone el texto y la imagen en columna en pantallas pequeñas */
+        flex-direction: column; 
+        text-align: center;
+    }
+    
+    .reseña-texto, .imagen-destacada {
+        flex: none; /* Deshabilita el flex-grow */
+        width: 100%;
+    }
+
+    .imagen-destacada {
+        order: -1; /* Mueve la imagen arriba del texto en móviles */
+        margin-bottom: 20px;
+    }
+
+    .contenido-bienvenida h1 {
+        font-size: 2.5em;
+    }
+
+    .subtitulo-bienvenida {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 500px) {
+    .contenido-bienvenida {
+        padding: 20px 15px;
+    }
+
+    .contenido-bienvenida h1 {
+        font-size: 2em;
+    }
+
+    .subtitulo-bienvenida {
+        font-size: 1em;
+    }
+    
+    .reseña-con-imagen {
+        padding: 25px;
+    }
+    
+    .reseña-texto h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 800px) {
+    /* 1. Ajustamos la altura del header ya que ahora tendrá más contenido apilado */
+    .navbar-alta {
+        height: auto; 
+        flex-direction: column; /* Cambiamos a columna para apilar logo y botones */
+        padding: 15px 10px;
+        justify-content: center;
+    }
+
+    /* 2. El logo se centra y le damos un margen inferior */
+    .logo {
+        margin-bottom: 15px;
+        margin-left: 0; /* Quitamos el margen lateral que pusimos antes */
+    }
+
+    .logo img {
+        height: 60px; /* Reducimos un poco el tamaño en móviles */
+    }
+
+    /* 3. CONFIGURACIÓN DE DOS COLUMNAS PARA BOTONES */
+    .botones-nav ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* AQUÍ CREAMOS LAS 2 COLUMNAS */
+        gap: 20px;
+        width: 100%;
+        max-width: 400px; /* Para que no se estiren demasiado en tablets */
+    }
+
+    .botones-nav li {
+        margin-left: 0; /* Quitamos el margen antiguo */
+    }
+
+    .botones-nav a {
+        display: block;
+        text-align: center;
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+
+    /* 4. IMPORTANTE: Ajuste del padding-top del body */
+    /* Como la barra ahora es más alta al tener dos niveles, empujamos el contenido hacia abajo */
+    body {
+        padding-top: 170px; 
+    }
+}
+
+
+
+/* --- Fin de los Estilos para la Sección de Inicio --- */
+
+/* --- Estilos para el Botón Flotante de WhatsApp --- */
+
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* Verde oficial de WhatsApp */
+    color: white;
+    width: 65px;
+    height: 65px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px; /* Tamaño del icono */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex; /* Usamos flex para centrar el icono perfectamente */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-flotante:hover {
+    background-color: #128c7e;
+    transform: scale(1.1); /* Efecto de agrandado al pasar el mouse */
+    color: white;
+}
+
+/* Ajuste para que el icono no se vea pegado en móviles */
+@media (max-width: 600px) {
+    .whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* --- Fin de los Estilos para el Botón Flotante de WhatsApp --- */
+
+
 /* --- Estilos para la Sección de Servicios (Galería) --- */
+
+.banner-de-servicios {
+    text-align: left;
+    max-width: 2000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    }
+
+    .banner-de-servicios {
+        flex: 1;
+    }
 
 #servicios {
     padding: 40px 20px;
@@ -70,16 +342,18 @@ main {
 }
 
 #servicios h2 {
-    font-size: 2.5em;
+    font-size: 2 em;
+    margin-top: 30px;
     margin-bottom: 30px;
     color: #333;
+    font-style: italic;
 }
 
 /* Contenedor de la Galería (Usando CSS Grid) */
 .galeria-servicios {
     display: grid;
     /* Define 3 columnas de igual tamaño */
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 2fr); 
     /* Espacio entre las tarjetas */
     gap: 30px; 
     max-width: 1200px;
@@ -111,7 +385,7 @@ main {
 }
 
 .tarjeta-servicio h3 {
-    color: #007bff; /* Un color primario para el título */
+    color: #c2004a; /* Un color primario para el título */
     margin-top: 0;
     font-size: 1.5em;
 }
@@ -135,7 +409,7 @@ main {
 }
 
 .btn-info:hover {
-    background-color: #007bff;
+    background-color: #800433;
 }
 
 
@@ -152,22 +426,192 @@ main {
 @media (max-width: 600px) {
     .galeria-servicios {
         /* Cambia a 1 columna (lista vertical) */
-        grid-template-columns: 1fr; 
-    }
+        grid-template-columns: 1fr; }
+        }
+
+/* --- Fin de los Estilos para la Sección de Servicios --- */
+
+/* --- Estilos para la Sección de Contacto --- */
+
+#contacto {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f4f4f4; /* Fondo gris claro */
 }
 
-/* --- Estilos para la Sección de Productos --- */
+#contacto h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+
+}
+
+.galeria-contactos {
+    display: grid;
+    /* Define 3 columnas de igual tamaño */
+    grid-template-columns: repeat(2, 1fr); 
+    /* Espacio entre las tarjetas */
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la cuadrícula */
+}
+
+.subtitulo-contacto {
+    margin-bottom: 40px;
+    color: #666;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/* Contenedor principal (para usar Flexbox) */
+.contenedor-contacto {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Estilos del Formulario */
+.formulario-contacto {
+    flex-basis: 60%; /* El formulario ocupará el 60% del espacio */
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block; /* La etiqueta ocupa su propia línea */
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+    font-size: 1em;
+}
+
+.campo textarea {
+    resize: vertical; /* Permite al usuario redimensionar verticalmente */
+}
+
+/* Estilo del Botón de Enviar */
+.btn-enviar {
+    background-color: #a7395e; /* Color principal */
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+.btn-enviar:hover {
+    background-color: #b30062;
+}
+
+/* Estilos de la Información Adicional */
+.info-adicional {
+    flex-basis: 30%; /* La información ocupa el 30% del espacio */
+    padding: 30px;
+    background-color: #e0f7fa; /* Fondo azul claro para diferenciar */
+    border-radius: 10px;
+    height: fit-content; /* Ajusta la altura al contenido */
+}
+
+.info-adicional h3 {
+    color: #910c4c;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.info-adicional p {
+    margin: 10px 0;
+    line-height: 1.8;
+}
+
+/* Estilos para el contenedor de la derecha en contacto */
+.info-y-mapa {
+    flex-basis: 50%; /* Ajusta el ancho de la columna derecha */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mapa-google {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden; /* Corta las esquinas del iframe para que se vean redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-google iframe {
+    display: flex; /
+}
+
+/* --- Media Query para Responsividad (Contacto) --- */
+@media (max-width: 768px) {
+    .contenedor-contacto {
+        /* Pone los elementos en columna en dispositivos pequeños */
+        flex-direction: column; 
+    }
+    
+    .formulario-contacto, .info-adicional {
+        flex-basis: 100%; /* Ocupan todo el ancho disponible */
+    }
+    
+    .info-adicional {
+        margin-top: 20px;
+    }
+
+}
+/* --- Fin de los Estilos para la Sección de Contacto --- */
+
+/* Estilos para la seccion productos */
+
+.banner-de-productos {
+    text-align: left;
+    max-width: 2000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    }
+
+    .banner-de-servicios {
+        flex: 1;
+    }
 
 #productos {
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
     background-color: #e9e9e9; /* Un color de fondo diferente para separarla de Servicios */
 }
 
 #productos h2 {
-    font-size: 2.5em;
+    font-size: 2em;
+    margin-top: 30px;
     margin-bottom: 30px;
     color: #333;
+    font-style: italic;
 }
 
 /* Contenedor de la Galería de Productos (Usando CSS Grid) */
@@ -204,7 +648,7 @@ main {
 }
 
 .tarjeta-producto h3 {
-    color: #333;
+    color: #90073b;
     font-size: 1.3em;
     margin: 10px 0 5px 0;
 }
@@ -247,5 +691,188 @@ main {
     .galeria-productos {
         /* Cambia a 1 columna (lista vertical) */
         grid-template-columns: 1fr; 
+    }
+}
+
+/* Estilos para el Pie de Página (Footer) */
+
+.pie-pagina {
+    background-color: #333; /* Mismo color que la barra superior */
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px; /* Espacio con el contenido de arriba */
+    text-align: center;
+}
+
+.contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de los iconos de Redes Sociales */
+.redes-sociales {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.redes-sociales a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+/* Colores específicos de cada red al pasar el mouse */
+.redes-sociales a:hover {
+    transform: translateY(-5px);
+}
+
+.redes-sociales a .fa-facebook-f:hover { color: #1877f2; }
+.redes-sociales a .fa-instagram:hover { color: #e4405f; }
+.redes-sociales a .fa-tiktok:hover { color: #00f2ea; }
+
+/* Estilo del texto de Marca Registrada */
+.copyright {
+    border-top: 1px solid #555; /* Línea sutil divisoria */
+    padding-top: 20px;
+}
+
+.copyright p {
+    font-size: 0.9em;
+    color: #bbb;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+    .redes-sociales {
+        gap: 40px; /* Más espacio para tocar con el dedo */
+    }
+}
+
+/* --- Fin de los Estilos para el Pie de Página --- */
+
+/* --- ESTILOS DETALLE DE PRODUCTO --- */
+.contenedor-producto {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.detalle-grid {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.producto-imagen {
+    flex: 1;
+}
+
+.producto-imagen img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.producto-info h1 {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.precio-grande {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #e63946;
+    margin-bottom: 20px;
+}
+
+.descripcion-corta h3, .opciones-compra h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.descripcion-corta ul {
+    list-style: none;
+    padding: 15px 0;
+}
+
+.descripcion-corta li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.descripcion-corta i {
+    color: #25d366;
+    margin-right: 10px;
+}
+
+.opciones-compra {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.selector-opcion {
+    margin-bottom: 20px;
+}
+
+.selector-opcion select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.metodos-pago p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.btn-comprar-final {
+    width: 100%;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 18px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-comprar-final:hover {
+    background-color: #1ea855;
+}
+
+.link-volver {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 800px) {
+    .detalle-grid {
+        flex-direction: column;
     }
 }

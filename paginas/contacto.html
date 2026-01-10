@@ -1,11 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contactate</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <header class="navbar-alta">
+
+        <div class="logo">
+            <img src="../recursos/Sin título-1.png" alt="Logo">
+        </div>
     
+        <nav class="botones-nav">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../paginas/Servicios.html">Servicios</a></li>
+                <li><a href="../paginas/productos.html">Productos</a></li>
+                <li><a href="../paginas/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+          <section id="contacto">
+                <div class="banner-de-servicios">
+                <img src="../recursos/cont.jpg" alt="inicio">
+
+            <h2>Contáctanos</h2>
+            <p class="subtitulo-contacto">¡Estamos listos para ayudarte con tus proyectos!</p>
+
+        <div class="galeria-contactos">
+
+            <article class="contenedor-contacto">
+                
+                <form action="procesar_formulario.php" method="POST" class="formulario-contacto">
+                    
+                    <div class="campo">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefono">Teléfono (opcional)</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+
+                    <div class="campo">
+                        <label for="consulta">Tu Consulta / Mensaje</label>
+                        <textarea id="consulta" name="consulta" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">
+                        Enviar Mensaje
+                    </button>
+                    
+                </form>
+                
+                <article class="info-adicional">
+                    <h3>Información de Contacto</h3>
+                    <p>📧 Email: infoimdico@gmail.com</p>
+                    <p>📞 Teléfono: +54 351 856 4887</p>
+                    <p>📍 Dirección: 25 de Mayo 1222, Cordoba, Argentina</p>
+                </article>
+                
+            </article>
+
+            <article class="mapa-google">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d851.2417615772969!2d-64.1665592!3d-31.415034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a2a3ec248a13%3A0x3ee676d84c63906e!2sImdico%20General%20Paz!5e0!3m2!1ses-419!2sar!4v1768004236449!5m2!1ses-419!2sar"
+             width="600" 
+             height="450" 
+             style="border:0;" 
+             allowfullscreen="" 
+             loading="lazy" 
+             referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </article>
+
+        </div>  
+
+        </section>
+
+    </main>
+
+
+
+    <a href="https://wa.me/+54912345678" class="whatsapp-flotante" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<footer class="pie-pagina">
+    <div class="contenedor-footer">
+        <div class="redes-sociales">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+
+        <div class="copyright">
+           <p>&reg; 2026 Imdico. Suc. Gral. Paz 25 de Mayo 1222 - Suc. San Vicente Sargento Cabral 1351, Córdoba Argentina</p>
+            <p>Marca Registrada.Todos los derechos reservados. </p>
+        </div>
+    </div>
+</footer>
+
 </body>
-</html>
+</html> 
