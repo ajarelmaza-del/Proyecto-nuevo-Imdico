@@ -38,6 +38,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding-top: 100px; 
+
 }
 
 
@@ -46,7 +47,7 @@ body {
     height: 80px; 
     width: auto;
     display: block; 
-    margin-left: auto;
+    margin-left: 10px;
     margin-right: auto;
     
 
@@ -58,7 +59,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    margin-right:  flex;
+    margin-right: 10px;
 }
 
 .botones-nav li {
